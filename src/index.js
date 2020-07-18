@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import {BrowserRouter, Route} from 'react-router-dom';
 import App from './App';
 import rootReducer from './rootReducer';
+import 'semantic-ui-css/semantic.min.css';
 import {userLoggedIn} from "./actions/auth";
 // import * as serviceWorker from './serviceWorker';
 
@@ -15,11 +16,18 @@ const store = createStore(
     rootReducer, composeWithDevTools(applyMiddleware(thunk))
 );
 
+if(localStorage.freelanceToken){
+    const payload = decode(localStorage.freelanceToken);
+    console.log(payload)
+    const user = {token: localStorage.freelanceToken, email:payload.email, confirmed:payload.confirmed};
+    store.dispatch(userLoggedIn(user));
+}
+
 
 ReactDOM.render(
   <BrowserRouter>
       <Provider store={store}>
-          <Route children={ App } />
+          <Route component={ App } />
       </Provider>
   </BrowserRouter>,
   document.getElementById('root')
