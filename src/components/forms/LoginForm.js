@@ -1,5 +1,5 @@
 import React from 'react';
-import {Form,Button,Message} from 'semantic-ui-react';
+import {Form,Button,Message,Segment} from 'semantic-ui-react';
 import Validator from 'validator';
 import PropTypes from 'prop-types';
 
@@ -26,8 +26,9 @@ class LoginForm extends React.Component{
         if(Object.keys(errors).length === 0){
             this.setState({loading: true});
             this.props.submit(this.state.data)
-                .catch(err => this.setState({errors: err.response.data.errors,loading:false}));
+                 .catch(err => this.setState({errors: err.response.data.errors,loading:false}));
         }
+
     };
     validate = (data) =>
     {
@@ -40,14 +41,14 @@ class LoginForm extends React.Component{
         const {data, errors, loading} = this.state;
 
         return(
-            <Form onSubmit={this.onSubmit} loading={loading}>
+            <Form size='large' onSubmit={this.onSubmit} loading={loading}>
+                <Segment stacked>
                 {errors.global &&
                 <Message negative>
                     <Message.Header>Something went wrong</Message.Header>
                     <p>{errors.global}</p>
                 </Message>}
                 <Form.Field error={!!errors.email}>
-                    <label htmlFor="email">Email</label>
                     <input type="email"
                            id="email"
                            name="email"
@@ -58,7 +59,7 @@ class LoginForm extends React.Component{
                     {errors.email && <InLineError text={errors.email}/> }
                 </Form.Field>
                 <Form.Field error={!!errors.password}>
-                    <label htmlFor="password">password</label>
+
                     <input type="password"
                            id="password"
                            name="password"
@@ -68,11 +69,13 @@ class LoginForm extends React.Component{
                     />
                     {errors.password && <InLineError text={errors.password}/>}
                 </Form.Field>
-                <Button primary> Login</Button>
+                <Button color='teal' fluid size='large'> Login</Button>
+                </Segment>
             </Form>
         );
     }
 }
+
 
 LoginForm.propTypes= {
     submit : PropTypes.func.isRequired

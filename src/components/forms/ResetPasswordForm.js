@@ -47,7 +47,7 @@ class ResetPasswordForm extends React.Component{
                     <input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Type it again,please!" value={data.passwordConfirmation} onChange={this.onChange}/>
                     {errors.passwordConfirmation && <InlineError text={errors.passwordConfirmation}/>}
                 </Form.Field>
-                <Button primary>Reset</Button>
+                <Button color='teal'>Reset</Button>
             </Form>
         );
     }

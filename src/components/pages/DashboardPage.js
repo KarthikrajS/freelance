@@ -1,12 +1,26 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import ConfirmEmailMessage from '../messages/ConfirmEmailMessage';
+import decode from "jwt-decode";
+
+import SecondaryPointing from '../navigation/SecondaryPointing'
+import SecondaryPointingMenu from '../navigation/SecondaryPointingMenu'
+import HamburgerMenu from '../navigation/HamburgerMenu'
 
 const DashboardPage = ({isConfirmed})=>(
+
+
     <div>
         {!isConfirmed && <ConfirmEmailMessage />}
-        {isConfirmed && <h1>Dashboard Page</h1>}
+        {isConfirmed &&
+        <div>
+            {/*<SecondaryPointingMenu/>*/}
+            <SecondaryPointing />
+            {/*<HamburgerMenu/>*/}
+
+        </div>
+        }
     </div>
 );
 

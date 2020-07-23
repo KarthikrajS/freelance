@@ -1,5 +1,5 @@
 import React from 'react';
-import {Menu,Dropdown,Image} from 'semantic-ui-react';
+import {Menu,Dropdown,Image,Header} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import gravatarUrl from 'gravatar-url';
 import PropTypes from 'prop-types';
@@ -8,11 +8,18 @@ import * as actions from "../../actions/auth";
 
 const TopNavigation = ({user,logout,isAuthenticated, isAdmin}) => (
     <Menu secondary pointing>
-        <Menu.Item as={Link} to="/dashboard">Dashboard</Menu.Item>
+        <Menu.Item ><Header as={Link} to="/dashboard" color='teal' textAlign='center'>Curious.</Header></Menu.Item>
         <Menu.Menu position="right">
+            <Menu.Item>
+                Plans
+            </Menu.Item>
             <Dropdown trigger={<Image avatar src={gravatarUrl(user.email)} /> }>
                 <Dropdown.Menu>
+                    <Dropdown.Item href="/profile" >Profile</Dropdown.Item>
+                    <Dropdown.Item href="/projectInvitation" >Project Invitation</Dropdown.Item>
+                    <Dropdown.Item href="/contest" >Contest</Dropdown.Item>
                     <Dropdown.Item onClick={()=>logout()}>Logout</Dropdown.Item>
+
                 </Dropdown.Menu>
             </Dropdown>
         </Menu.Menu>
@@ -25,7 +32,10 @@ TopNavigation.propTypes ={
     }).isRequired,
     logout:PropTypes.func.isRequired,
     isAuthenticated:PropTypes.bool.isRequired,
-    isAdmin:PropTypes.number.isRequired
+    isAdmin:PropTypes.number.isRequired,
+    history: PropTypes.shape({
+        push:PropTypes.func.isRequired
+    }).isRequired
 };
 
 function mapStateToProps(state) {

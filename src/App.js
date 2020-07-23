@@ -8,22 +8,25 @@ import DashboardPage from './components/pages/DashboardPage'
 import ConfirmationPage from './components/pages/ConfirmationPage';
 import ForgotPasswordPage from './components/pages/ForgotPasswordPage';
 import ResetPasswordPage from './components/pages/ResetPasswordPage'
+import ProfilePage from './components/pages/ProfilePage'
 import UserRoute from './components/routes/UserRoute';
 import GuestRoute from './components/routes/GuestRoute';
 import TopNavigation from './components/navigation/TopNavigation';
+import Footer from './components/navigation/Footer'
 import {connect} from 'react-redux';
 
 const App = ({location,isAuthenticated}) => (
     <div className="ui container">
         {isAuthenticated && <TopNavigation/>}
-      <Route path="/"  location={location} exact component={HomePage}/>
-      <Route path="/confirmation/:token" location={location} exact component={ConfirmationPage}/>
-      <GuestRoute path="/login"  location={location} exact component={LoginPage}/>
-      <GuestRoute path="/signup" location={location}  exact component={SignupPage}/>
-      <GuestRoute location={location} path="/forgot_password" exact component={ForgotPasswordPage}/>
-      <GuestRoute location={location} path="/reset_password/:token" exact component={ResetPasswordPage}/>
-      <UserRoute path="/dashboard" location={location} exact component={DashboardPage} />
-
+        <Route path="/"  location={location} exact component={HomePage}/>
+        <Route path="/confirmation/:token" location={location} exact component={ConfirmationPage}/>
+        <GuestRoute path="/login"  location={location} exact component={LoginPage}/>
+        <GuestRoute path="/signup" location={location}  exact component={SignupPage}/>
+        <GuestRoute location={location} path="/forgot_password" exact component={ForgotPasswordPage}/>
+        <GuestRoute location={location} path="/reset_password/:token" exact component={ResetPasswordPage}/>
+        <UserRoute path="/dashboard" location={location} exact component={DashboardPage} />
+        <UserRoute path="/profile" location={location} exact component={ProfilePage} />
+        <Footer/>
     </div>
 
 )

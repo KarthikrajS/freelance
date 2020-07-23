@@ -39,7 +39,7 @@ class ForgotPasswordForm extends React.Component{
                     <input type="email" id="email" name="email" placeholder="example@example.com" value={data.email} onChange={this.onChange}/>
                     {errors.email && <InLineError text={errors.email}/>}
                 </Form.Field>
-                <Button primary>Forgot Password</Button>
+                <Button color='teal'>Forgot Password</Button>
             </Form>
         );
     }

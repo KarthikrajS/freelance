@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {validateToken,resetPassword} from '../../actions/auth'
 import ResetPasswordForm from '../forms/ResetPasswordForm';
 
+
 class ResetPasswordPage extends React.Component{
 
     state={

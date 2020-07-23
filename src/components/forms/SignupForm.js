@@ -50,7 +50,7 @@ class SignupForm extends React.Component{
                     <input type="password" id="password" name="password" placeholder="Make it secure" value={data.password} onChange={this.onChange}/>
                     {errors.password && <InlineError text={errors.password}/>}
                 </Form.Field>
-                <Button primary>Sign Up</Button>
+                <Button color='teal'>Sign Up</Button>
             </Form>
         );
     }
